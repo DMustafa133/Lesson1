@@ -10,9 +10,9 @@ import android.widget.EditText;
 
 public class Activity2 extends AppCompatActivity  implements View.OnClickListener {
 
-    EditText edtEmail;
-    EditText edtDate;
-    EditText edtFIO;
+    EditText editEmail;
+    EditText editDate;
+    EditText editFIO;
     Button btnSave;
 
     @Override
@@ -20,9 +20,9 @@ public class Activity2 extends AppCompatActivity  implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
 
-        edtEmail = (EditText) findViewById(R.id.editEmail);
-        edtDate = (EditText) findViewById(R.id.editDate);
-        edtFIO = (EditText) findViewById(R.id.editFIO);
+        editEmail = (EditText) findViewById(R.id.editEmail);
+        editDate = (EditText) findViewById(R.id.editDate);
+        editFIO = (EditText) findViewById(R.id.editFIO);
         btnSave = (Button) findViewById(R.id.btnSave);
         btnSave.setOnClickListener(this);
     }
@@ -30,9 +30,9 @@ public class Activity2 extends AppCompatActivity  implements View.OnClickListene
     @Override
     public void onClick(View v) {
         Intent intent = new Intent();
-        intent.putExtra("email", edtEmail.getText().toString());
-        intent.putExtra("date", edtDate.getText().toString());
-        intent.putExtra("Fio", edtFIO.getText().toString());
+        intent.putExtra("email", editEmail.getText().toString());
+        intent.putExtra("date", editDate.getText().toString());
+        intent.putExtra("Fio", editFIO.getText().toString());
         setResult(RESULT_OK, intent);
         finish();
     }
