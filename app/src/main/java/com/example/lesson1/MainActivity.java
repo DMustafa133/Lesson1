@@ -12,6 +12,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static final String KEY_FIO = "Fio";
+    public static final String KEY_DATE = "date";
+    public static final String KEY_EMAIL = "email";
+
     Button btnEdit;
     TextView tvFIO;
     TextView tvEmail;
@@ -43,11 +47,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(data == null) {
             return;
         }
-        String fio = data.getStringExtra("Fio");
+        String fio = data.getStringExtra(KEY_FIO);
         tvFIO.setText(fio);
-        String date = data.getStringExtra("date");
+        String date = data.getStringExtra(KEY_DATE);
         tvDate.setText(date);
-        String email = data.getStringExtra("email");
+        String email = data.getStringExtra(KEY_EMAIL);
         tvEmail.setText(email);
     }
 }
