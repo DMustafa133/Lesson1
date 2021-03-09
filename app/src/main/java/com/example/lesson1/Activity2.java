@@ -10,6 +10,10 @@ import android.widget.EditText;
 
 public class Activity2 extends AppCompatActivity  implements View.OnClickListener {
 
+    public static final String KEY_EMAIL = "email";
+    public static final String KEY_DATE = "date";
+    public static final String KEY_FIO = "Fio";
+
     EditText editEmail;
     EditText editDate;
     EditText editFIO;
@@ -30,9 +34,9 @@ public class Activity2 extends AppCompatActivity  implements View.OnClickListene
     @Override
     public void onClick(View v) {
         Intent intent = new Intent();
-        intent.putExtra("email", editEmail.getText().toString());
-        intent.putExtra("date", editDate.getText().toString());
-        intent.putExtra("Fio", editFIO.getText().toString());
+        intent.putExtra(KEY_EMAIL, editEmail.getText().toString());
+        intent.putExtra(KEY_DATE, editDate.getText().toString());
+        intent.putExtra(KEY_FIO, editFIO.getText().toString());
         setResult(RESULT_OK, intent);
         finish();
     }
