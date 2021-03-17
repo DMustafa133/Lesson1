@@ -1,5 +1,6 @@
 package com.example.lesson1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -14,12 +15,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager
-                .beginTransaction();
-        MyFragment myFragment = new MyFragment();
-        fragmentTransaction.add(R.id.container, myFragment);
-        fragmentTransaction.commit();
+    //    if(savedInstanceState == null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager
+                    .beginTransaction();
 
+            MyFragment myFragment = new MyFragment();
+            fragmentTransaction.add(R.id.container, myFragment);
+            fragmentTransaction.commit();
+      //  }
     }
+
 }
