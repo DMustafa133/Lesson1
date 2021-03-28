@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,7 +31,15 @@ public class firstRecyclerViewAdapter extends RecyclerView.Adapter<firstRecycler
         notifyDataSetChanged();
     }
 
+    public void removeData(int position) {
+        dataClass.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, getItemCount());
+    }
 
+    public List<DataClass> getInfo() {
+        return dataClass;
+    }
 
     @NonNull
     @Override
@@ -47,6 +56,7 @@ public class firstRecyclerViewAdapter extends RecyclerView.Adapter<firstRecycler
         holder.tv_date.setText(dataClass.get(position).getDate());
         holder.tv_email.setText(dataClass.get(position).getEmail());
         holder.imageView.setImageResource(dataClass.get(position).getImage());
+        holder.btn_del.setText("Delete");
     }
 
     @Override
@@ -56,6 +66,7 @@ public class firstRecyclerViewAdapter extends RecyclerView.Adapter<firstRecycler
 
     public interface OnItemCickListener {
         void itemClick(View v, int adapterPosition);
+        void itemDelete(int adapterPosition);
     }
 
 
@@ -65,6 +76,7 @@ public class firstRecyclerViewAdapter extends RecyclerView.Adapter<firstRecycler
         TextView tv_fio;
         TextView tv_date;
         TextView tv_email;
+        Button btn_del;
 
         public infoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -73,12 +85,16 @@ public class firstRecyclerViewAdapter extends RecyclerView.Adapter<firstRecycler
             tv_fio = itemView.findViewById(R.id.tv_fio);
             tv_date = itemView.findViewById(R.id.tv_date);
             tv_email = itemView.findViewById(R.id.tv_email);
+            btn_del = itemView.findViewById(R.id.btn_delete);
+
 
             itemView.setOnClickListener(v -> {
                 if(onItemCickListener != null) {
                     onItemCickListener.itemClick(v, getAdapterPosition());
                 }
-
+            });
+            btn_del.setOnClickListener(v -> {
+                onItemCickListener.itemDelete(getAdapterPosition());
             });
 
         }
